@@ -1,0 +1,30 @@
+{
+  "name": "vesting-commonform",
+  "description": "generate vesting.js-compatible vesting provisions",
+  "version": "0.0.0",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "dependencies": {
+    "ord": "~0.1.1"
+  },
+  "devDependencies": {
+    "commonform-cli": "~0.5.0",
+    "commonform-validate": "~0.4.0",
+    "tape": "~4.0.1"
+  },
+  "keywords": [
+    "contract",
+    "law",
+    "securities",
+    "startup",
+    "stock",
+    "vesting"
+  ],
+  "license": "MIT",
+  "repository": "kemitchell/vesting-commonform.js",
+  "scripts": {
+    "convert-cliff": "commonform render --format native < cliff.commonform > cliff.json",
+    "convert-straight": "commonform render --format native < straight.commonform > straight.json",
+    "prepublish": "npm run convert-straight && npm run convert-cliff",
+    "test": "jsmd-tape README.md | sed 's!vesting-commonform!./!' | node"
+  }
+}
